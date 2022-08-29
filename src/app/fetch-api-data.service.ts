@@ -25,6 +25,14 @@ export class UserRegistrationService {
       .pipe(catchError(this.handleError));
   }
 
+  // API call for the user login endpoint
+  public userLogin(userDetails: any): Observable<any> {
+    console.log(userDetails);
+    return this.http
+      .post(`${apiUrl}login`, userDetails)
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
       console.error(`Some error occurred: ${error.error.message}`);
@@ -36,20 +44,6 @@ export class UserRegistrationService {
     return throwError(
       () => new Error('Something bad happened; please try again later.')
     );
-  }
-
-  // API call to registration
-  registration(userDetails: any): Observable<any> {
-    return this.http
-      .post(`${apiUrl}register`, userDetails)
-      .pipe(catchError(this.handleError));
-  }
-
-  // API call to login
-  login(userDetails: any): Observable<any> {
-    return this.http
-      .post(`${apiUrl}login`, userDetails)
-      .pipe(catchError(this.handleError));
   }
 
   // API call to get all movies
