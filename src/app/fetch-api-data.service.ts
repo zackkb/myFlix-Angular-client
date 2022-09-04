@@ -136,27 +136,22 @@ export class FetchApiDataService {
   // API call to get favorite movie
   getFavoriteMovies(): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user');
+    const user = localStorage.getItem('user');
     return this.http
-      .get(apiUrl + `users/${username}/movies`, {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + token,
-        })
+      .get(`${apiUrl}users/${user}/movies`, {
+        headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
       })
-      .pipe(
-        map(this.extractResponseData),
-        catchError(this.handleError)
-      );
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // API call to add movie to favorite list of user
   addFavoriteMovie(movieID: string): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user');
+    const user = localStorage.getItem('user');
     return this.http
-      .post(apiUrl + `users/${username}/movies/${movieID}`, null, {
+      .post(apiUrl + `users/${user}/movies/${movieID}`, null, {
         headers: new HttpHeaders({
-          Authorization: 'Bearer ' + token,
+          Authorization: `Bearer ${token}`
         })
       })
       .pipe(
@@ -166,19 +161,14 @@ export class FetchApiDataService {
   }
 
   // API call to remove movie from favorite list of user
-  removeFavoriteMovie(movieID: any): Observable<any> {
+  removeFavoriteMovie(movieID: string): Observable<any> {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user');
+    const user = localStorage.getItem('user');
     return this.http
-      .delete(apiUrl + `users/${username}/movies/${movieID}`, {
-        headers: new HttpHeaders({
-          Authorization: 'Bearer ' + token,
-        })
+      .delete(`${apiUrl}users/${user}/movies/${movieID}`, {
+        headers: new HttpHeaders({ Authorization: `Bearer ${token}` }),
       })
-      .pipe(
-        map(this.extractResponseData),
-        catchError(this.handleError)
-      );
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // API call to delete user

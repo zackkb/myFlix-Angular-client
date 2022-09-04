@@ -26,7 +26,7 @@ export class UserLoginFormComponent implements OnInit {
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar,
-    private router: Router
+    public router: Router
   ) { }
 
   ngOnInit(): void { }

@@ -36,6 +36,7 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+
   getFavoriteMovies(): void {
     this.fetchApiData.getFavoriteMovies().subscribe((resp: any) => {
       this.favoriteMovies = resp;
@@ -49,13 +50,23 @@ export class MovieCardComponent implements OnInit {
   }
 
   addToFavoriteMovies(id: string): void {
+    console.log(id);
     this.fetchApiData.addFavoriteMovie(id).subscribe((result) => {
-      this.snackBar.open('Movie added to list!', 'OK', {
+      this.snackBar.open('Movie added to favorites!', 'OK', {
         duration: 2000,
         panelClass: 'snackbar',
       });
+      console.log(result);
       this.ngOnInit();
-    })
+    });
+  }
+
+  removeFromFavoriteMovies(id: string): void {
+    console.log(id);
+    this.fetchApiData.removeFavoriteMovie(id).subscribe((result) => {
+      console.log(result);
+      this.ngOnInit();
+    });
   }
 
   openDirectorDialog(
