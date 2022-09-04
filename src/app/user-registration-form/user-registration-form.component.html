@@ -1,4 +1,4 @@
-<mat-card class="user-registration-card">
+<mat-card>
   <mat-card-header>
     <mat-card-title>Sign Up!</mat-card-title>
   </mat-card-header>
@@ -17,19 +17,30 @@
       <mat-form-field>
         <input
           matInput
+          [type]="hide ? 'password' : 'text'"
           [(ngModel)]="userData.Password"
-          type="password"
+          class="hidden"
           placeholder="Password"
+          type="password"
           name="Password"
           required
         />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
       </mat-form-field>
       <mat-form-field>
         <input
           matInput
           [(ngModel)]="userData.Email"
-          type="email"
           placeholder="Email"
+          type="email"
           name="Email"
           required
         />
@@ -38,8 +49,8 @@
         <input
           matInput
           [(ngModel)]="userData.Birthday"
-          type="date"
           placeholder="Birthday"
+          type="date"
           name="Birthday"
         />
       </mat-form-field>
@@ -47,8 +58,9 @@
   </mat-card-content>
   <mat-card-actions>
     <button
-      class="register-button"
       mat-raised-button
+      [class.spinner]="loading"
+      [disabled]="loading"
       (click)="registerUser()"
       color="primary"
     >

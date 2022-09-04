@@ -1,12 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-
-// Use to close dialog on success
-import { MatDialogRef } from '@angular/material/dialog';
-
+import { Router } from '@angular/router';
 // Brings in the API calls
 import { FetchApiDataService } from '../fetch-api-data.service';
-
-// Use to display notifications back to the user
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -17,20 +13,27 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class UserRegistrationFormComponent implements OnInit {
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
+  user = [];
+  loading = false;
+
+  // Hide password input
+  hide = true;
+
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    private router: Router
   ) { }
 
   ngOnInit(): void { }
 
   // Function responsible for sending the form inputs to the backend
   registerUser(): void {
+    // activate spinner
+    this.loading = true;
     this.fetchApiData.userRegistration(this.userData).subscribe(
       (result) => {
-        // Logic for a successful user registration (TO BE IMPLEMENTED)
-
         // Close modal on success
         this.dialogRef.close();
         console.log(result);

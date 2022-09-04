@@ -1,0 +1,89 @@
+.profile {
+  width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%),
+    0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+  mat-form-field-wrapper {
+    padding: 0;
+  }
+  mat-form-field {
+    width: 220px;
+  }
+  button {
+    margin: 10px 10px 10px 0;
+  }
+}
+
+.profile-edit {
+  margin-left: 10px;
+}
+
+.profile-data-row {
+  display: flex;
+  flex-flow: row;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 10px 0;
+  font-size: 16px;
+  mat-icon:active {
+    transform: scale(0.8);
+  }
+}
+
+.profile-category {
+  display: inline-block;
+  width: 200px;
+  font-weight: 700;
+}
+
+.profile-data {
+  width: 220px;
+}
+
+.hidde {
+  width: 250px;
+}
+
+.profileEditBtns {
+  display: block;
+}
+
+.favorite-movies-heading {
+  color: #fff;
+  text-align: center;
+}
+
+.favorite-movies {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 20px;
+}
+
+.movie-card {
+  width: 250px;
+  text-align: center;
+  mat-card-header {
+    margin: 0 auto;
+    justify-content: center;
+  }
+  img {
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+  }
+  mat-icon {
+    cursor: pointer;
+    line-height: 1.2;
+  }
+  mat-icon:hover {
+    color: red;
+  }
+  mat-icon:active {
+    transform: scale(0.8);
+  }
+}

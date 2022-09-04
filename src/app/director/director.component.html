@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ data.Name }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p><strong>Bio:</strong> {{ data.Bio }}</p>
+    <p><strong>Birth:</strong> {{ data.Birth | date: "longDate" }}</p>
+    <p [hidden]="!data.Death">
+      <strong>Death:</strong> {{ data.Death | date: "longDate" }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions class="director-actions">
+    <button
+      class="director-close-button"
+      mat-stroked-button
+      aria-label="Close the director details button"
+      mat-dialog-close
+      color="primary"
+    >
+      X
+    </button>
+  </mat-card-actions>
+</mat-card>

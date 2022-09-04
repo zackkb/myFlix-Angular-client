@@ -1,0 +1,21 @@
+<mat-toolbar>
+  <a class="myFlix-logo" routerLink="/movies"><span>myFlix</span></a>
+  <span class="spacer"></span>
+  <button
+    mat-icon-button
+    class="navbar-btn"
+    aria-label="Profile button with icon"
+    (click)="profile()"
+  >
+    <mat-icon aria-hidden="false" aria-label="Profile">person</mat-icon>
+  </button>
+
+  <button
+    mat-icon-button
+    class="navbar-btn"
+    aria-label="Logout button with logout icon"
+    (click)="logout()"
+  >
+    <mat-icon aria-hidden="false" aria-label="Logout">logout</mat-icon>
+  </button>
+</mat-toolbar>

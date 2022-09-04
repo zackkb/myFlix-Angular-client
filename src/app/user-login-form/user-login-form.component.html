@@ -1,4 +1,4 @@
-<mat-card class="user-login-form">
+<mat-card>
   <mat-card-header>
     <mat-card-title>Log In!</mat-card-title>
   </mat-card-header>
@@ -17,17 +17,34 @@
       <mat-form-field>
         <input
           matInput
+          [type]="hide ? 'password' : 'text'"
           [(ngModel)]="userData.Password"
+          class="hidde"
           placeholder="Password"
           type="password"
           name="Password"
           required
         />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
       </mat-form-field>
     </form>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button (click)="loginUser()" color="primary">
+    <button
+      mat-raised-button
+      [class.spinner]="loading"
+      [disabled]="loading"
+      (click)="loginUser()"
+      color="primary"
+    >
       Log In
     </button>
   </mat-card-actions>

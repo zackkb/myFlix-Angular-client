@@ -1,0 +1,32 @@
+.movie-cards-container {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 20px;
+  justify-content: center;
+  margin: 50px;
+  padding-bottom: 50px;
+}
+
+.movie-card {
+  width: 250px;
+  text-align: center;
+  mat-card-header {
+    margin: 0 auto;
+    justify-content: center;
+  }
+  img {
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+  }
+  mat-icon {
+    cursor: pointer;
+    line-height: 1.2;
+  }
+  mat-icon:hover {
+    color: red;
+  }
+  mat-icon:active {
+    transform: scale(0.8);
+  }
+}
