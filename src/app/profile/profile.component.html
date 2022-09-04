@@ -16,6 +16,7 @@
           [(ngModel)]="userData.Username"
           class="hidden"
           placeholder="{{ user.Username }}"
+          value="{{ user.Username }}"
           type="text"
           name="Username"
         />
@@ -37,7 +38,7 @@
       <mat-icon
         (click)="displayUsernamerEdit()"
         aria-hidden="false"
-        aria-label="Pen icon to edit the input"
+        aria-label="Icon to edit the input"
       >
         edit
       </mat-icon>
@@ -55,8 +56,9 @@
         <input
           matInput
           [(ngModel)]="userData.Email"
-          class="hidde"
+          class="hidden"
           placeholder="{{ user.Email }}"
+          value="{{ user.Email }}"
           type="text"
           name="Email"
         />
@@ -78,7 +80,7 @@
       <mat-icon
         (click)="displayEmailEdit()"
         aria-hidden="false"
-        aria-label="Pen icon to edit the input"
+        aria-label="Icon to edit the input"
       >
         edit
       </mat-icon>
@@ -97,7 +99,7 @@
           matInput
           [type]="hide ? 'password' : 'text'"
           [(ngModel)]="userData.Password"
-          class="hidde"
+          class="hidden"
           placeholder="Password"
           type="password"
           name="Password"
@@ -129,7 +131,7 @@
       <mat-icon
         (click)="displayPasswordEdit()"
         aria-hidden="false"
-        aria-label="Pen icon to edit the input"
+        aria-label="Icon to edit the input"
       >
         edit
       </mat-icon>
@@ -149,6 +151,7 @@
           [(ngModel)]="userData.Birthday"
           class="hidden"
           placeholder="{{ user.Birthday }}"
+          value="{{ user.Birthday }}"
           type="date"
           name="Birthday"
         />
@@ -181,7 +184,6 @@
     Delete profile
   </button>
 </div>
-
 <!-- Favorite movies -->
 <h2 class="favorite-movies-heading">Favorite movies</h2>
 <div class="favorite-movies">
