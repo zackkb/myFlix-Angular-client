@@ -1,3 +1,14 @@
 mat-card {
   line-height: 1.6;
 }
+
+.synopsis-close-button.mat-stroked-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0px;
+  line-height: 14px;
+  min-width: auto;
+  border: none;
+  font-size: 20px;
+}
