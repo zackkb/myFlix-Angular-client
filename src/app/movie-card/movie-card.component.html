@@ -32,30 +32,17 @@
       <button
         mat-button
         color="primary"
-        (click)="openSynopsisDialog(movie.Title, movie.Description)"
+        (click)="openSynopsisDialog(movie.Description)"
       >
         Synopsis
       </button>
-
-      <!-- Render add to or remove from favorites button depending on isFav -->
-      <button
-        mat-button
-        *ngIf="!isFav(movie._id)"
+      <mat-icon
         (click)="addToFavoriteMovies(movie._id)"
         aria-hidden="false"
-        aria-label="Icon to add movie to favorite movies"
-        color="primary"
+        aria-label="Icon to add movie to favorites"
       >
-        <mat-icon>favorite_border</mat-icon>
-      </button>
-      <button
-        mat-button
-        *ngIf="isFav(movie._id)"
-        (click)="removeFromFavoriteMovies(movie._id)"
-        color="primary"
-      >
-        <mat-icon>favorite</mat-icon>
-      </button>
+        favorite_border
+      </mat-icon>
     </mat-card-actions>
   </mat-card>
 </div>

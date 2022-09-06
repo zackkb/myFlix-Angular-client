@@ -4,10 +4,8 @@
   </mat-card-header>
   <mat-card-content>
     <p><strong>Bio:</strong> {{ data.Bio }}</p>
-    <p><strong>Birth:</strong> {{ data.Birth | date: "longDate" }}</p>
-    <p [hidden]="!data.Death">
-      <strong>Death:</strong> {{ data.Death | date: "longDate" }}
-    </p>
+    <p><strong>Birth:</strong> {{ data.Birth }}</p>
+    <p [hidden]="!data.Death"><strong>Death:</strong> {{ data.Death }}</p>
   </mat-card-content>
   <mat-card-actions class="director-actions">
     <button

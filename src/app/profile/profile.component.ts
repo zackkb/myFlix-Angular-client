@@ -5,6 +5,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
+import { DirectorComponent } from '../director/director.component';
+import { GenreComponent } from '../genre/genre.component';
+import { SynopsisComponent } from '../synopsis/synopsis.component';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -14,6 +18,9 @@ export class ProfileComponent implements OnInit {
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
   user: any = {};
+  movies: any[] = [];
+  favoriteMoviesId: any[] = [];
+  favoriteMovies: any[] = [];
 
   // Display inputs to edit profile
   isDisplayedUsernameEdit = false;
@@ -104,6 +111,7 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  // Delete profile
   deleteProfile(): void {
     this.fetchApiData.deleteUser().subscribe((resp: any) => {
       console.log(resp);
@@ -113,5 +121,62 @@ export class ProfileComponent implements OnInit {
     });
     localStorage.clear();
     this.router.navigate(['/']);
+  }
+
+  // Get movie data
+  getMovieDataForFavorites(): void {
+    this.fetchApiData.getAllMovies().subscribe((resp: any) => {
+      this.movies = resp;
+      this.filterMovies();
+      return this.movies;
+    });
+  }
+
+  // Filter to include user's favorites
+  filterMovies() {
+    const favMovId = this.favoriteMoviesId.map((movie) => movie._id);
+    this.favoriteMovies = this.movies.filter((movie) => {
+      return favMovId.includes(movie._id);
+    });
+  }
+
+  // Remove movie from user's favorites
+  removeFromFavoriteMovies(movieId: string): void {
+    this.fetchApiData.removeFavoriteMovie(movieId).subscribe((resp: any) => {
+      this.snackBar.open('Movie removed from favorites!', 'OK', {
+        duration: 2000,
+        panelClass: 'snackbar',
+      });
+      window.location.reload();
+    });
+  }
+
+  // Opens director dialog
+  openDirectorDialog(
+    name: string,
+    bio: string,
+    birth: string,
+    death: string
+  ): void {
+    this.dialog.open(DirectorComponent, {
+      data: { Name: name, Bio: bio, Birth: birth, Death: death },
+      width: '500px',
+    });
+  }
+
+  // Opens genre dialog
+  openGenreDialog(name: string, description: string): void {
+    this.dialog.open(GenreComponent, {
+      data: { Name: name, Description: description },
+      width: '500px',
+    });
+  }
+
+  // Opens synopsis dialog
+  openSynopsisDialog(synopsis: string): void {
+    this.dialog.open(SynopsisComponent, {
+      data: { Synopsis: synopsis },
+      width: '500px',
+    });
   }
 }
