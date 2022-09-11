@@ -12,9 +12,18 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  /**
+ * Navigate to ProfileComponent
+ * @function profile
+ */
   profile() {
     this.router.navigate(['profile']);
   }
+
+  /**
+   * Clear localStorage and navigate to "/"
+   * @function logout
+   */
   logout() {
     localStorage.clear();
     this.router.navigate(['/']);

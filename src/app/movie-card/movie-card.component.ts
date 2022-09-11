@@ -26,7 +26,11 @@ export class MovieCardComponent implements OnInit {
     this.isFavoriteMovie('62619350230c7b71b50e5804');
   }
 
-  // Get list of movies
+  /**
+ * Get data of all movies using API and store locally
+ * @return {array} data of all movies
+ * @function getMovies
+ */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -34,7 +38,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  // Check if movie is included in favorite movie list of user
+  /**
+ * Check if movie is included in favorite movie list of user
+ * @param {string} movieId
+ * @returns {boolean}
+ * @function isFavoriteMovie
+ */
   isFavoriteMovie(movieId: string) {
     this.fetchApiData.getUser().subscribe((resp: any) => {
       // Array with ids of favorite movies
@@ -45,7 +54,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  // Add movie to favorites
+  /**
+   * Add movie to list of favorite movies
+   * @param {string} movieId
+   * @function addToFavoriteMovies
+   */
   addToFavoriteMovies(movieId: string): void {
     this.fetchApiData.addFavoriteMovie(movieId).subscribe((resp: any) => {
       this.snackBar.open('Movie added to favorites!', 'OK', {
@@ -55,6 +68,14 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+ * Opens dialog of DirectorComponent
+ * @param {string} name
+ * @param {string} bio
+ * @param {string} birth
+ * @param {string} death
+ * @function openDirectorDialog
+ */
   openDirectorDialog(
     name: string,
     bio: string,
@@ -67,6 +88,12 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+   * Opens dialog of GenreComponent
+   * @param {string} name
+   * @param {string} description
+   * @function openGenreDialog
+   */
   openGenreDialog(name: string, description: string): void {
     this.dialog.open(GenreComponent, {
       data: { Name: name, Description: description },
@@ -74,6 +101,11 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
+  /**
+ * Opens dialog of SynopsisComponent
+ * @param {string} synopsis
+ * @function openSynopsisDialog
+ */
   openSynopsisDialog(synopsis: string): void {
     this.dialog.open(SynopsisComponent, {
       data: { Synopsis: synopsis },
